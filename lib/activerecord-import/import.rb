@@ -207,6 +207,10 @@ class ActiveRecord::Base
       # value for it into each row so the sequencer will fire later
       #if !column_names.include?(primary_key) && connection.prefetch_primary_key? && sequence_name
       # add support for primary keys being an array rather than scalar
+
+puts "primary_key=#{primary_key.inspect}"
+puts "column_names=#{column_names.inspect}"
+
       if ![primary_key].flatten.*.to_sym.to_set.subset?(column_names.*.to_sym.to_set) &&
           sequence_name && connection.prefetch_primary_key?
          column_names << primary_key
